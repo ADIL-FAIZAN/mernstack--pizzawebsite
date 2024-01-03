@@ -4,13 +4,13 @@ const router = express.Router();
 const {registeruser}=require('../models/registerusermodel')
 const registeruserSchema=require("../validation/registeruser")
 const validate =require("../middleware/validateuser")
-const bcrypt=require("bcrypt")
+//const bcrypt=require("bcrypt")
 
 
 router.post("/",validate(registeruserSchema),async (req,res)=>{
 
-const salt=await bcrypt.genSalt(10)
-const hash=await bcrypt.hash(req.body.password,salt)
+//const salt=await bcrypt.genSalt(10)
+//const hash=await bcrypt.hash(req.body.password,salt)
 //user exist logic
 
 const usernoteligible=await registeruser.findOne({email:req.body.email})
@@ -22,7 +22,8 @@ const postdata=new registeruser({
 
     username:req.body.username,
     email:req.body.email,
-    password:hash,
+    password:req.body.password
+   // password:hash,
     //isAdmin:req.body.isAdmin
 })
 
