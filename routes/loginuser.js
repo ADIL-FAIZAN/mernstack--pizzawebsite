@@ -2,7 +2,9 @@ const mongoose=require("mongoose");
 const express = require('express');
 const router = express.Router();
 const {Loginuser}=require('../models/loginusermodel')
-const bcrypt=require("bcrypt")
+//const bcrypt=require("bcrypt")
+
+const bcrypt=require("bcryptjs")
 const {registeruser}=require("../models/registerusermodel")
 const Joi = require('joi');
 
